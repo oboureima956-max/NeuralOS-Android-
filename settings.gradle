@@ -1,2 +1,2 @@
-rootProject.name = "NeuralOS-cloud"
-include(":app")
+rootProject.name = "NeuralOS"
+include ':app'
