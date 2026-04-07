@@ -16,6 +16,19 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+NeuralOS/
+│
+├── app/
+├── cloud/
+│
+├── .github/
+│   └── workflows/
+│       └── neural_pipeline.yml  ✅
+│
+├── gradle/
+├── build.gradle
+├── settings.gradle
+...
 
       - name: Give permission
         run: chmod +x gradlew
