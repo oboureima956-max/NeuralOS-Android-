@@ -1,37 +1,40 @@
-name: Android CI
+name: Build NeuralOS APK & AAB
 
 on:
   push:
-  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+    - name: Checkout project
+      uses: actions/checkout@v3
 
-      - name: Setup JDK
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-NeuralOS/
-│
-├── app/
-├── cloud/
-│
-├── .github/
-│   └── workflows/
-│       └── neural_pipeline.yml  ✅
-│
-├── gradle/
-├── build.gradle
-├── settings.gradle
-...
+    - name: Setup Java
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '17'
 
-      - name: Give permission
-        run: chmod +x gradlew
+    - name: Grant permission
+      run: chmod +x gradlew
 
-      - name: Build (force même si erreur)
-        run: ./gradlew assembleDebug || true
+    - name: Build APK
+      run: ./gradlew assembleDebug
+
+    - name: Build AAB
+      run: ./gradlew bundleRelease
+
+    - name: Upload APK
+      uses: actions/upload-artifact@v3
+      with:
+        name: NeuralOS-APK
+        path: app/build/outputs/apk/debug/app-debug.apk
+
+    - name: Upload AAB
+      uses: actions/upload-artifact@v3
+      with:
+        name: NeuralOS-AAB
+        path: app/build/outputs/bundle/release/app-release.aab)
