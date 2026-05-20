@@ -4,7 +4,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.2.0'
+        classpath 'com.android.tools.build:gradle:8.0.0'
     }
 }
 
@@ -13,28 +13,4 @@ allprojects {
         google()
         mavenCentral()
     }
-}plugins {
-    id 'com.android.application'
-}
-
-android {
-    namespace "com.neuralos.app"
-    compileSdk 34
-
-    defaultConfig {
-        applicationId "com.neuralos.app"
-        minSdk 24
-        targetSdk 34
-        versionCode 1
-        versionName "1.0"
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-        }
-    }
-}
-
-dependencies {
 }
