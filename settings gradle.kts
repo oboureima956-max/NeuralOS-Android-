@@ -36,5 +36,4 @@ dependencyResolutionManagement {
       mavenCentral()
   }
 }
-rootProject.name = "My Application"
-include(":app")
+roorootProject.name = "NeuralOS"
